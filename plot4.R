@@ -17,18 +17,13 @@ source("common_data_source.R")
 png(filename="plot4.png", width=pngsize, height=pngsize)
 
 ## Create Plot Layout
-par(mfrow=c(2,2))
+par(mfcol=c(2,2))
 
 ## Create Plots
 
 with(use_data,{
   ## From plot2.R
   plot(Time,Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
-  
-  ## First new plot 
-  ## Note - because we haven't created a new "datetime" variable, we need to
-  ## explicitly label this.
-  plot(Time,Voltage,type="l",xlab="datetime")
   
   ## From plot3.R
   plot(Time,Sub_metering_1,type="l",xlab="",ylab="Energy sub metering")
@@ -37,6 +32,11 @@ with(use_data,{
   ## The selection from the table headers still works within the with() function
   ## And note the sneaky change - no box around the legend!
   legend("topright", lty=1, lwd=2, bty="n",col=c("black","red","blue"), legend = names(use_data[7:9]))
+  
+  ## First new plot 
+  ## Note - because we haven't created a new "datetime" variable, we need to
+  ## explicitly label this.
+  plot(Time,Voltage,type="l",xlab="datetime")
   
   ## Second new plot
   plot(Time,Global_reactive_power,type="l",xlab="datetime")
