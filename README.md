@@ -105,10 +105,10 @@ The script:
 <li>initialises the single variable,</li>
 <li>runs the common data source</li>
 <li>sets the display to the required PNG format</li>
-<li>formats the output in 2 x 2 format</li>
+<li>formats the output in 2 x 2 format using mfcol</li>
 <li>generates the Global Active Power against time plot</li>
-<li>generates a new Voltage against time plot, with the x-axis label explicitly annotated because a separate datetime dataset was not created,</li>
 <li>generates the Sub-Metering 1, 2 & 3 plot from plot3.R but modifying the legend to exclude the surrounding box,
+<li>generates a new Voltage against time plot, with the x-axis label explicitly annotated because a separate datetime dataset was not created,</li>
 <li>and then generates a line plot of the 'Global Reactive Power' data against time, explicitly generating the x-axis label as above.</li></ol>
 
 ## Results
