@@ -51,6 +51,8 @@ web site</a>:
 </ol>
 
 ## Data Processing
+_(note that the 3rd level headers are displaying inconsistently - Loading Data and Plots 1 & 4 are okay, Plots 2 & 3 are not. The ordered lists are correctly terminated and the syntax is identical. Preview in RStudio also shows okay. Ho hum._ Matthew)
+
 ### Loading Data
 As the four R scripts were required to run independently, a common data loading and cleaning script was created, "common_data_source.R".
 
