@@ -1,0 +1,17 @@
+{
+    "contents" : "## plot3.R\n## No 3 of 4 R Scripts for the first course project\n## for the Johns Hopkins \"Exploratory Data Analysis\"\n## Coursera course.\n##\n## Author: Matthew Pemble\n## Github: gothub.com/mwapemble\n## Course: exdata-033, 5 Oct 15\n\n## First, initialise variables \npngsize = 480\n\n## Then use the common data source to output use-data\nsource(\"common_data_source.R\")\n\n## Format output device\npng(filename=\"plot3.png\", width=pngsize, height=pngsize)\n\n## Create Plot\nwith(use_data, {\n  plot(Time,Sub_metering_1,type=\"l\",xlab=\"\",ylab=\"Energy sub metering\")\n  lines(Time,Sub_metering_2,type=\"l\",col=\"red\")\n  lines(Time,Sub_metering_3,type=\"l\",col=\"blue\")\n})\n## Legend extracting names from the table header. \n  legend(\"topright\", lty=1, lwd=2, col=c(\"black\",\"red\",\"blue\"), legend = names(use_data[7:9]))\n\n## Close device\ndev.off()\n",
+    "created" : 1444397036315.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1331446005",
+    "id" : "82904CFF",
+    "lastKnownWriteTime" : 1444398774,
+    "path" : "~/Documents/Coursera/JohnsHopkins/Exploratory Data Analysis/ExData_Plotting1/plot3.R",
+    "project_path" : "plot3.R",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : true,
+    "type" : "r_source"
+}

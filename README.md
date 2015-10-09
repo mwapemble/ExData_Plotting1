@@ -1,16 +1,33 @@
-## Introduction
+===
+title: "Readme.MD for JH 'Exploratory Data Analysis Project 1'"
+author: "Matthew Pemble"
+output: html_document
+===
 
+# Readme.MD
+============
+## Course
+This is the Readme file for the first course project
+for the Johns Hopkins "Exploratory Data Analysis"
+Coursera course.
+
+Author: Matthew Pemble
+Github: gothub.com/mwapemble
+Course: exdata-033, 5 Oct 15
+
+## Data
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
 Learning Repository</a>, a popular repository for machine learning
-datasets. In particular, we will be using the "Individual household
-electric power consumption Data Set" which I have made available on
-the course web site:
+datasets. 
 
+The particular dataset used is the "Individual Household electric power consumption Data Set", which was downloaded, for the final data run, 
+from the course website on Fri Oct  9 11:35:19 2015 (BST / A)
 
-* <b>Dataset</b>: <a href="https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip">Electric power consumption</a> [20Mb]
+<b>Dataset</b>: <a href="https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip">Electric power consumption</a> [20Mb]
 
-* <b>Description</b>: Measurements of electric power consumption in
+###<b>Description</b>: 
+Measurements of electric power consumption in
 one household with a one-minute sampling rate over a period of almost
 4 years. Different electrical quantities and some sub-metering values
 are available.
@@ -33,82 +50,85 @@ web site</a>:
 <li><b>Sub_metering_3</b>: energy sub-metering No. 3 (in watt-hour of active energy). It corresponds to an electric water-heater and an air-conditioner.</li>
 </ol>
 
-## Loading the data
+## Data Processing
+### Loading Data
+As the four R scripts were required to run independently, a common data loading and cleaning script was created, "common_data_source.R".
 
-
-
-
-
-When loading the dataset into R, please consider the following:
-
-* The dataset has 2,075,259 rows and 9 columns. First
-calculate a rough estimate of how much memory the dataset will require
-in memory before reading into R. Make sure your computer has enough
-memory (most modern computers should be fine).
-
-* We will only be using data from the dates 2007-02-01 and
-2007-02-02. One alternative is to read the data from just those dates
-rather than reading in the entire dataset and subsetting to those
-dates.
-
-* You may find it useful to convert the Date and Time variables to
-Date/Time classes in R using the `strptime()` and `as.Date()`
-functions.
-
-* Note that in this dataset missing values are coded as `?`.
-
-
-## Making Plots
-
-Our overall goal here is simply to examine how household energy usage
-varies over a 2-day period in February, 2007. Your task is to
-reconstruct the following plots below, all of which were constructed
-using the base plotting system.
-
-First you will need to fork and clone the following GitHub repository:
-[https://github.com/rdpeng/ExData_Plotting1](https://github.com/rdpeng/ExData_Plotting1)
-
-
-For each plot you should
-
-* Construct the plot and save it to a PNG file with a width of 480
-pixels and a height of 480 pixels.
-
-* Name each of the plot files as `plot1.png`, `plot2.png`, etc.
-
-* Create a separate R code file (`plot1.R`, `plot2.R`, etc.) that
-constructs the corresponding plot, i.e. code in `plot1.R` constructs
-the `plot1.png` plot. Your code file **should include code for reading
-the data** so that the plot can be fully reproduced. You should also
-include the code that creates the PNG file.
-
-* Add the PNG file and R code file to your git repository
-
-When you are finished with the assignment, push your git repository to
-GitHub so that the GitHub version of your repository is up to
-date. There should be four PNG files and four R code files.
-
-
-The four plots that you will need to construct are shown below. 
-
+This script:
+<ol>
+<li>Initialises the variables for the specific data download.</li>
+<li>Verifies whether a data directory exists and, if not, creates it.</li>
+<li>Verifies whether the source data zipfile has been downloaded and, if not, downloads it. The download command is the version for running on Apple OSX.</li>
+<li>Verifes whether the source data file exists and, if not, expands the zipfile.</li>
+<li>Loads the source data in to a table, specifying the replacement of the unknown data marker '?' with the R-compliant 'NA'.</li>
+<li>Converts the text time data into POSIXlt format. The date has to be added here otherwise it converts in to times on the run date. It is necessary to do this on the full data set before the conversion of the date data.</li>
+<li>Converts the text date data into POSIXlt format.</li>
+<li>Subsets the source data based on the variables 'startdate' and 'enddate'. To convert the script to a more generic function, these could be parameterised.</li>
+<li>Converts the data columns required for the plots in to numeric format.</li>
+</ol>
 
 ### Plot 1
-
-
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
-
+This script 
+<ol>
+<li>initialises the single variable,</li>
+<li>runs the common data source</li>
+<li>sets the display to the required PNG format</li>
+<li>and then generates a standard output histogram of the 'Global Active Power' data, formatted with the required main and x-axis labels and coloured red.</li></ol>
 
 ### Plot 2
-
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
-
+This script 
+<ol>
+<li>initialises the single variable,</li>
+<li>runs the common data source</li>
+<li>sets the display to the required PNG format</li>
+<li>and then generates a line plot of the 'Global Active Power' data against time, formatted with the required main and x-axis labels.</li></ol>
 
 ### Plot 3
-
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
-
+This script 
+<ol>
+<li>initialises the single variable,</li>
+<li>runs the common data source</li>
+<li>sets the display to the required PNG format</li>
+<li>generates a line plot of the 'Sub Metering 1' dataset against time, formatted with the required y and null x-axis labels.</li>
+<li>adds a line for the 'Sub Metering 2' dataset against time</li>
+<li>adds a line for the 'Sub Metering 3' dataset against time</li>
+<li>adds the required legend using the names from the source data headers.</li>
+</ol>
 
 ### Plot 4
+This script reuses the plots from plot 2 & 3 but, in order not to re-run the common data source multiple times, incorporates them explicitly rather than calling the plot2.R and plot3.R functions.
+Note that if the project specification did not require separate R scripts, the source and plot scripts could easily be re-worked and parameterised as functions and called from a base script.
+The script:
+<ol>
+<li>initialises the single variable,</li>
+<li>runs the common data source</li>
+<li>sets the display to the required PNG format</li>
+<li>formats the output in 2 x 2 format</li>
+<li>generates the Global Active Power against time plot</li>
+<li>generates a new Voltage against time plot, with the x-axis label explicitly annotated because a separate datetime dataset was not created,</li>
+<li>generates the Sub-Metering 1, 2 & 3 plot from plot3.R but modifying the legend to exclude the surrounding box,
+<li>and then generates a line plot of the 'Global Reactive Power' data against time, explicitly generating the x-axis label as above.</li></ol>
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+## Results
+
+### Plot 1
+![histogram of Global Active Power values](plot1.png) 
+
+### Plot 2
+![plot of Global Active Power against time](plot2.png) 
+
+### Plot 3
+![plot of Energy Sub Metering datasets against time](plot3.png) 
+
+### Plot 4
+![Four way plot including plot 2 and a slightly-modified version of plot 3 plus two new plots of Voltage and Global reactive Power against time](plot4.png)
+
+## Acknowledgements
+As well as the lectures and swirl tutorial, guidance on the use of specific functions was gained from:
+<ul>
+<li>"R in Action", 2nd Ed, R Kabacoff</li>
+<li>"R for Excel Users", online version, J Taveras</li>
+<li>RStudio.com, especially the "R Markdown Cheat Sheet"</li>
+<li>and syntax examples from various stackoverflow.com threads (via the mechanism of Google).</li></ul>
+
 
